@@ -6,12 +6,11 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import Switch from '@material-ui/core/Switch'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
-import { APP_NAME } from './StringConstants'
+import { APP_NAME } from '../constants/StringConstants'
+import Button from '@material-ui/core/Button'
+import { isAuthenticated } from '../handlers/AuthHandler'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,18 +21,17 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: 'white',
+  },
+  buttonWhite: {
+    color: 'white',
   },
 }))
 
 export default function Navbar () {
   const classes = useStyles()
-  const [auth, setAuth] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked)
-  }
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
@@ -43,23 +41,24 @@ export default function Navbar () {
     setAnchorEl(null)
   }
 
+  const handleLogout = () => {
+    sessionStorage.clear()
+    window.location.reload()
+  }
+
   return (
     <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch"/>}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon/>
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            {APP_NAME}
-          </Typography>
-          {auth && (
+          <a href="/" className={classes.title}>
+            <Typography variant="h6">
+              {APP_NAME}
+            </Typography>
+          </a>
+          {isAuthenticated() ? (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -86,8 +85,17 @@ export default function Navbar () {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
+            </div>
+          ) : (
+            <div>
+              <Button href="/login" color="primary" variant="contained">
+                Login
+              </Button>
+              <Button href="/register" className={classes.buttonWhite}>
+                Register
+              </Button>
             </div>
           )}
         </Toolbar>

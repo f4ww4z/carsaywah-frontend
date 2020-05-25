@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
-import { APP_NAME } from '../StringConstants'
+import { APP_NAME } from '../../constants/StringConstants'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
-import CAR_SHARING_IMAGE_PATH from '../_assets/carsharing.png'
+import CAR_SHARING_IMAGE_PATH from '../../_assets/carsharing.png'
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexFlow: 'column nowrap',
+    marginBottom: '16px',
   },
   topHeader: {
     display: 'flex',
@@ -58,10 +59,13 @@ const HomePage = () => {
       </Box>
       <Box className={s.middleHeader}>
         <Container>
-          <Button className={s.middleHeaderButtonGetStarted} variant="contained" color="secondary">
+          <Button className={s.middleHeaderButtonGetStarted}
+                  variant="contained"
+                  size="large"
+                  color="secondary">
             Get Started
           </Button>
-          <Button variant="contained">
+          <Button size="large" variant="contained">
             Pricing
           </Button>
         </Container>
