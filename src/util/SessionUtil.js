@@ -12,9 +12,16 @@ export const getSession = () => {
   }
 }
 
-export const setSession = (access, refresh, username, userId) => {
-  sessionStorage.setItem(SS_ACCESS_TOKEN, access)
-  sessionStorage.setItem(SS_REFRESH_TOKEN, refresh)
-  sessionStorage.setItem(SS_USERNAME, username)
-  sessionStorage.setItem(SS_USER_ID, userId)
+export const setSession = ({ access, refresh, username, userId }) => {
+  if (access)
+    sessionStorage.setItem(SS_ACCESS_TOKEN, access)
+
+  if (refresh)
+    sessionStorage.setItem(SS_REFRESH_TOKEN, refresh)
+
+  if (username)
+    sessionStorage.setItem(SS_USERNAME, username)
+
+  if (userId)
+    sessionStorage.setItem(SS_USER_ID, userId)
 }

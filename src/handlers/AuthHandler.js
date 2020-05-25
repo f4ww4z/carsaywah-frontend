@@ -2,7 +2,7 @@ import axios from 'axios'
 import { BASE_URL } from '../constants/ServerConstants'
 import { currentTimestamp } from '../util/DateUtil'
 import JwtDecode from 'jwt-decode'
-import { getSession } from '../util/SessionUtil'
+import { getSession, setSession } from '../util/SessionUtil'
 
 export const getUserTokenAndUserId = async (username, password) => {
   try {
@@ -30,6 +30,31 @@ export const getUserTokenAndUserId = async (username, password) => {
   } catch (error) {
     console.log(error.response)
     return ''
+  }
+}
+
+export const registerUser = async (username, email, password) => {
+  try {
+    const result = await axios.post(
+      `${BASE_URL}/users/register/`,
+      {
+        'username': username,
+        'email': email,
+        'password': password,
+      })
+
+    console.log(result)
+
+    if (result.status !== 201) {
+      return {}
+    }
+
+    // return id, username, email, password
+    return result.data
+
+  } catch (e) {
+    console.log(e.response)
+    return {}
   }
 }
 
@@ -61,6 +86,20 @@ export const isAuthenticated = () => {
   return Number(decodedAccessToken['user_id']) === currentSession.userId
 }
 
-export const refreshToken = (refresh) => {
-//TODO
+export const refreshToken = async () => {
+  const session = getSession()
+
+  try {
+    const result = await axios.post(
+      `${BASE_URL}/token/refresh/`,
+      {
+        'refresh': String(session.refresh),
+      })
+
+    setSession({ access: result.data['access'] })
+    // console.log(result.data['access'])
+
+  } catch (error) {
+    console.log(error.response)
+  }
 }

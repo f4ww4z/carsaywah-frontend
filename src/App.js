@@ -9,6 +9,7 @@ import LoginPage from './components/auth/LoginPage'
 import { BrowserRouter } from 'react-router-dom'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import DashboardPage from './components/DashboardPage'
+import RegisterPage from './components/auth/RegisterPage'
 
 const theme = createMuiTheme({
   palette: {
@@ -32,6 +33,9 @@ function App () {
             </Route>
             <Route exact path="/login">
               <LoginPage/>
+            </Route>
+            <Route exact path="/register">
+              <RegisterPage/>
             </Route>
             <ProtectedRoute exact path="/dashboard">
               <DashboardPage/>

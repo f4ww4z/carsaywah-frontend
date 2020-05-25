@@ -21,9 +21,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     document.title = `Dashboard | ${APP_NAME}`
-
-    console.log(currentSession)
-  }, [currentSession])
+  }, [])
 
   return (
     <Box className={s.root}>
