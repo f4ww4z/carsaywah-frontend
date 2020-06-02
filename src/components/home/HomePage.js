@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     backgroundRepeat: 'no-repeat',
     height: '300px',
     width: '100%',
-    alignItems: 'end',
+    alignItems: 'flex-end',
     '& button': {
       height: 'max-content',
       marginBottom: '16px',

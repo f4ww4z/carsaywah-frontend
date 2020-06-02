@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router'
-import { isAuthenticated, refreshToken } from '../handlers/AuthHandler'
+import { isAuthenticated, refreshToken } from '../_handlers/AuthHandler'
 
 // export const ProtectedRoute = ({ children: Component, ...rest }) => (
 //   <Route {...rest} render={(props) => (

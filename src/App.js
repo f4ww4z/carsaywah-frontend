@@ -1,3 +1,5 @@
+import 'react-toastify/dist/ReactToastify.min.css'
+
 import React from 'react'
 import { Route, Switch } from 'react-router'
 import HomePage from './components/home/HomePage'
@@ -10,6 +12,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import DashboardPage from './components/DashboardPage'
 import RegisterPage from './components/auth/RegisterPage'
+import NewCarPage from './components/carprovider/NewCarPage'
+import UpdateCarPage from './components/carprovider/UpdateCarPage'
+import { ToastContainer } from 'react-toastify'
 
 const theme = createMuiTheme({
   palette: {
@@ -26,6 +31,7 @@ function App () {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <div>
+          <ToastContainer/>
           <Navbar/>
           <Switch>
             <Route exact path="/">
@@ -40,6 +46,10 @@ function App () {
             <ProtectedRoute exact path="/dashboard">
               <DashboardPage/>
             </ProtectedRoute>
+            <ProtectedRoute exact path="/car/new">
+              <NewCarPage/>
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/car/update/:id" component={UpdateCarPage}/>
           </Switch>
           <Footer/>
         </div>

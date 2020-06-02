@@ -4,12 +4,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { useForm } from 'react-hook-form'
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import { getUserTokenAndUserId, isAuthenticated } from '../../handlers/AuthHandler'
+import { getUserTokenAndUserId, isAuthenticated } from '../../_handlers/AuthHandler'
 import { APP_NAME } from '../../constants/StringConstants'
 import { Redirect, withRouter } from 'react-router'
 import { setSession } from '../../util/SessionUtil'
+import { StyledTextField } from '../CommonViews'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,14 +82,14 @@ const LoginPage = () => {
             {errorMessage}
           </Typography>
           <form className={s.loginForm} onSubmit={handleSubmit(onSubmit)}>
-            <TextField
+            <StyledTextField
               name="username"
               type="text"
               label="Username"
               inputRef={register({ required: true })}
               error={!!errors.username}
             />
-            <TextField
+            <StyledTextField
               name="password"
               type="password"
               label="Password"

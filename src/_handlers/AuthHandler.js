@@ -59,7 +59,7 @@ export const registerUser = async (username, email, password) => {
 }
 
 export const isAuthenticated = () => {
-  console.log('Checking if authenticated or not...')
+  // console.log('Checking if authenticated or not...')
 
   const currentSession = getSession()
 

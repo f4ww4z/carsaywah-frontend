@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { APP_NAME } from '../constants/StringConstants'
 import Button from '@material-ui/core/Button'
-import { isAuthenticated } from '../handlers/AuthHandler'
+import { isAuthenticated } from '../_handlers/AuthHandler'
 
 const useStyles = makeStyles((theme) => ({
   root: {
