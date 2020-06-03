@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexFlow: 'column nowrap',
     padding: '30px',
+    marginTop: '30px',
     backgroundColor: 'white',
   },
   myCarsTitle: {
@@ -24,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const RootView = styled(FlexContainer)`
-    justify-content: center;
     padding: 60px 0 60px 0;
 `
 
@@ -69,10 +69,20 @@ const DashboardPage = () => {
   // console.log(myCars)
 
   return (
-    <RootView>
-      <Typography variant="h2" align="center">
+    <RootView justify="center">
+      <Typography variant="h2" align="center" style={{ marginBottom: '16px' }}>
         Welcome, {currentSession.username}!
       </Typography>
+      <FlexBreak/>
+      <FlexBox justify="center">
+        <Button size="large"
+                variant="contained"
+                color="secondary"
+                style={{ height: '60px' }}
+                href="/rent">
+          Rent a Car
+        </Button>
+      </FlexBox>
       <FlexBreak/>
       <Box className={s.myCars}>
         <Typography className={s.myCarsTitle} variant="h3">

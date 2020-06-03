@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     backgroundColor: '#504f4f',
     color: '#ffffff',
-    marginTop: '100px',
+    // marginTop: '100px',
     padding: '16px',
   },
 })

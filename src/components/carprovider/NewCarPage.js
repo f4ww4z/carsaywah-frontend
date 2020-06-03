@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import Typography from '@material-ui/core/Typography'
 import { addNewCar } from '../../_handlers/CarHandler'
 import { Redirect } from 'react-router'
+import { toast } from 'react-toastify'
 
 const RootView = styled(FlexContainer)`
     justify-content: center;
@@ -30,7 +31,6 @@ const NewCarPage = () => {
   const { register, handleSubmit, errors } = useForm()
 
   const [loading, setLoading] = React.useState(false)
-  const [errorMessage, setErrorMessage] = React.useState('')
   const [hasMadeNewCar, setHasMadeNewCar] = React.useState(false)
 
   const onSubmit = async (data) => {
@@ -42,11 +42,12 @@ const NewCarPage = () => {
 
     if (Object.values(newCar).length === 0) {
       setLoading(false)
-      setErrorMessage('Cannot add new car at this time. Please try again.')
+      toast.error('Cannot add new car at this time. Please try again.')
       return
     }
 
     // console.log(newCar)
+    toast.success('Successfully added car.')
     setHasMadeNewCar(true)
   }
 
@@ -58,9 +59,6 @@ const NewCarPage = () => {
         <NewCarForm flexflow="column nowrap" onSubmit={handleSubmit(onSubmit)}>
           <Typography variant="h3">
             Add a New Car
-          </Typography>
-          <Typography variant="h6">
-            {errorMessage}
           </Typography>
           <StyledTextField
             name="platNo"

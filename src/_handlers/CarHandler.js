@@ -31,3 +31,10 @@ export const updateCar = async (id, platNo, brand, capacity) => {
 export const deleteCar = async (id) => {
   return sendRequest({ method: 'delete', endpoint: `cars/${id}` })
 }
+
+export const searchCar = async ({ brand = ' ' }) => {
+  if (brand === '') {
+    brand = ' '
+  }
+  return sendRequest({ endpoint: `searchcar/${brand}` })
+}
