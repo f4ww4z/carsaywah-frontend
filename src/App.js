@@ -17,6 +17,9 @@ import UpdateCarPage from './components/carprovider/UpdateCarPage'
 import { ToastContainer } from 'react-toastify'
 import SearchCarPage from './components/rent/SearchCarPage'
 import background from './_assets/background.jpg'
+import ConfirmTripPage from './components/rent/ConfirmTripPage'
+import TripDetailPage from './components/rent/TripDetailPage'
+import MyTripsPage from './components/trip/MyTripsPage'
 
 const theme = createMuiTheme({
   palette: {
@@ -52,6 +55,9 @@ function App () {
             <ProtectedRoute exact path="/car/new" component={NewCarPage}/>
             <ProtectedRoute exact path="/car/update/:id" component={UpdateCarPage}/>
             <ProtectedRoute exact path="/rent" component={SearchCarPage}/>
+            <ProtectedRoute exact path="/rent/confirm/:carId" component={ConfirmTripPage}/>
+            <ProtectedRoute exact path="/trip/:id" component={TripDetailPage}/>
+            <ProtectedRoute exact path="/trips" component={MyTripsPage}/>
           </Switch>
           <Footer/>
         </div>

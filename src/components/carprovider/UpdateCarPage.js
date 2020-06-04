@@ -47,9 +47,9 @@ const UpdateCarPage = (props) => {
   const onSubmit = async (data) => {
     setLoading(true)
 
-    const { platNo, brand, capacity } = data
+    const { platNo, brand, capacity, location } = data
 
-    const updatedCar = await updateCar(id, platNo, brand, capacity)
+    const updatedCar = await updateCar(id, platNo, brand, capacity, location)
 
     if (!!updatedCar.status) {
       setLoading(false)
@@ -93,6 +93,14 @@ const UpdateCarPage = (props) => {
             inputRef={register({ required: true })}
             error={!!errors.capacity}
             defaultValue={car['capacity']}
+          />
+          <StyledTextField
+            name="location"
+            type="text"
+            label="Location"
+            inputRef={register({ required: true })}
+            error={!!errors.location}
+            defaultValue={car['location']}
           />
           <FormButtons backUrl="/dashboard" disabled={loading} submitText="Update"/>
         </UpdateCarForm>

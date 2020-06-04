@@ -81,6 +81,13 @@ const NewCarPage = () => {
             inputRef={register({ required: true })}
             error={!!errors.capacity}
           />
+          <StyledTextField
+            name="location"
+            type="text"
+            label="Location of car"
+            inputRef={register({ required: true })}
+            error={!!errors.location}
+          />
           <FormButtons backUrl="/dashboard" disabled={loading} submitText="Add"/>
         </NewCarForm>
       </RootView>

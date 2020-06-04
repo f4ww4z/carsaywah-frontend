@@ -59,7 +59,13 @@ export default function Navbar () {
             </Typography>
           </a>
           {isAuthenticated() ? (
-            <div>
+            <>
+              <Button color="inherit" href="/rent">
+                Rent
+              </Button>
+              <Button color="inherit" href="/trips">
+                My Trips
+              </Button>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -87,7 +93,7 @@ export default function Navbar () {
                 <MenuItem onClick={() => window.location.href = '/dashboard'}>Dashboard</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
-            </div>
+            </>
           ) : (
             <div>
               <Button href="/login" color="primary" variant="contained">

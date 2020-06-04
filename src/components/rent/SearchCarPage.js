@@ -55,7 +55,7 @@ const SearchCarPage = () => {
   return (
     <RootView align="center" flexflow="column nowrap">
       <Typography variant="h2" style={{ marginBottom: '16px' }}>
-        Find a Car
+        Find a Car to Rent
       </Typography>
       <TextField
         style={{ marginBottom: '16px' }}
@@ -94,7 +94,7 @@ const SearchCarPage = () => {
               <CarButtonsView>
                 <Button variant="contained"
                         color="secondary"
-                        href={`/car/rent/${car['id']}`}
+                        href={`/rent/confirm/${car['id']}`}
                         style={{ marginRight: '10px' }}>
                   Rent
                 </Button>

@@ -24,6 +24,10 @@ export const FlexContainer = styled(Container)`
   ${cssFlexMixin}
 `
 
+export const RootFlexView = styled(FlexContainer)`
+    padding: 60px 0 60px 0;
+`
+
 export const StyledTextField = styled(TextField)`
   margin-top: 10px;
 `

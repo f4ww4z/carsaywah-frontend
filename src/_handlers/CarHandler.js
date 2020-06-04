@@ -18,11 +18,12 @@ export const getCar = async (id) => {
   return sendRequest({ endpoint: `cars/${id}` })
 }
 
-export const updateCar = async (id, platNo, brand, capacity) => {
+export const updateCar = async (id, platNo, brand, capacity, location) => {
   const data = {
     platNo: platNo,
     brand: brand,
     capacity: capacity,
+    location: location,
   }
 
   return sendRequest({ method: 'put', endpoint: `cars/${id}`, data: data })
